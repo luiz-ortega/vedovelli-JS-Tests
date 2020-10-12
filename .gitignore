@@ -1,0 +1,9 @@
+node_modules/
+build/
+dist/
+.DS_*
+.DS_Store
+*.log
+logs
+**/*.backup.*
+**/*.back.*

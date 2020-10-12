@@ -1,0 +1,16 @@
+{
+  "name": "module1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luiz Ortega <luizngust@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "jest": "^26.5.3"
+  }
+}
