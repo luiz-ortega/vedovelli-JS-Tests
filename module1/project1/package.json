@@ -12,7 +12,10 @@
   "author": "Luiz Ortega <luizngust@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
     "@types/jest": "^26.0.14",
+    "babel-jest": "^26.5.2",
     "jest": "^26.5.3"
   }
 }
