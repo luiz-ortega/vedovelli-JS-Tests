@@ -17,5 +17,8 @@
     "@types/jest": "^26.0.14",
     "babel-jest": "^26.5.2",
     "jest": "^26.5.3"
+  },
+  "dependencies": {
+    "dinero.js": "^1.8.1"
   }
 }
