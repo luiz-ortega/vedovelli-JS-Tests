@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "loadash": "^1.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
   }
 }
