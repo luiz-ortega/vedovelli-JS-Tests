@@ -105,4 +105,21 @@ describe('Cart', () => {
             expect(cart.getTotal().getAmount()).toEqual(0);
         });
     });
+
+    describe('special conditions', () => {
+        it('should apply percentage discount when quantity above limit is passed', () => {
+            const condition = {
+                percentage: 30,
+                minimun: 2,
+            };
+
+            cart.add({
+                product,
+                condition,
+                quantity: 3,
+            });
+
+            expect(cart.getTotal().getAmount()).toEqual(74315);
+        });
+    });
 });
