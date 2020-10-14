@@ -122,6 +122,21 @@ describe('Cart', () => {
             expect(cart.getTotal().getAmount()).toEqual(74315);
         });
 
+        it('should NOT apply percentage discount when quantity is below or equals to minimun', () => {
+            const condition = {
+                percentage: 30,
+                minimun: 2,
+            };
+
+            cart.add({
+                product,
+                condition,
+                quantity: 2,
+            });
+
+            expect(cart.getTotal().getAmount()).toEqual(70776);
+        });
+
         it('should apply quantity discount for event quantities', () => {
             const condition = {
                 quantity: 2,
@@ -134,6 +149,34 @@ describe('Cart', () => {
             });
 
             expect(cart.getTotal().getAmount()).toEqual(70776);
+        });
+
+        it('should NOT apply quantity discount for event quantities when condition is not even', () => {
+            const condition = {
+                quantity: 2,
+            };
+
+            cart.add({
+                product,
+                condition,
+                quantity: 1,
+            });
+
+            expect(cart.getTotal().getAmount()).toEqual(35388);
+        });
+
+        it('should apply quantity discount for odd quantity', () => {
+            const condition = {
+                quantity: 2,
+            };
+
+            cart.add({
+                product,
+                condition,
+                quantity: 5,
+            });
+
+            expect(cart.getTotal().getAmount()).toEqual(106164);
         });
     });
 });
