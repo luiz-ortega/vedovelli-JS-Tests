@@ -1,24 +1,26 @@
 {
-  "name": "module1",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watchAll",
-    "test:coverage": "jest --coverage"
-  },
-  "keywords": [],
-  "author": "Luiz Ortega <luizngust@gmail.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@types/jest": "^26.0.14",
-    "babel-jest": "^26.5.2",
-    "jest": "^26.5.3"
-  },
-  "dependencies": {
-    "dinero.js": "^1.8.1"
-  }
+    "name": "module1",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watchAll",
+        "test:coverage": "jest --coverage",
+        "test:debug": "ndb jest"
+    },
+    "keywords": [],
+    "author": "Luiz Ortega <luizngust@gmail.com>",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.11.6",
+        "@babel/preset-env": "^7.11.5",
+        "@types/jest": "^26.0.14",
+        "babel-jest": "^26.5.2",
+        "jest": "^26.5.3",
+        "ndb": "^1.1.5"
+    },
+    "dependencies": {
+        "dinero.js": "^1.8.1"
+    }
 }
