@@ -96,8 +96,14 @@
             >
           </div>
         </nav>
+        <input
+          class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline"
+          type="search"
+          placeholder="Search"
+        />
       </div>
     </header>
+    <cart />
 
     <nuxt />
     <!-- <footer class="bg-gray-200">
@@ -114,25 +120,25 @@
 </template>
 
 <script>
-// import Cart from '@/components/Cart'
+import Cart from '@/components/Cart'
 export default {
-  // components: { Cart },
+  components: { Cart },
   computed: {
-    isCartOpen() {
-      return this.$cart.getState().open
-    },
-    products() {
-      return this.$cart.getState().items
-    },
+    // isCartOpen() {
+    //   return this.$cart.getState().open
+    // },
+    // products() {
+    //   return this.$cart.getState().items
+    // },
   },
   methods: {
-    toggleCart() {
-      if (this.$cart.getState().open) {
-        this.$cart.close()
-      } else {
-        this.$cart.open()
-      }
-    },
+    // toggleCart() {
+    //   if (this.$cart.getState().open) {
+    //     this.$cart.close()
+    //   } else {
+    //     this.$cart.open()
+    //   }
+    // },
   },
 }
 </script>
