@@ -60,14 +60,14 @@ export default {
   data() {
     return {
       quantity: 1,
-    }
+    };
   },
   methods: {
     decrease() {
       if (this.quantity > 0) {
-        this.quantity--
+        this.quantity--;
       }
     },
   },
-}
+};
 </script>

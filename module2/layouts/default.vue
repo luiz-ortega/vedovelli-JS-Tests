@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import Cart from '@/components/Cart'
+import Cart from '@/components/Cart';
 export default {
   components: { Cart },
   computed: {
@@ -140,5 +140,5 @@ export default {
     //   }
     // },
   },
-}
+};
 </script>

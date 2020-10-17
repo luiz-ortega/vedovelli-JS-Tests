@@ -26,19 +26,19 @@ export default {
   data() {
     return {
       term: '',
-    }
+    };
   },
   watch: {
     term() {
       if (this.term === '') {
-        this.doSearch()
+        this.doSearch();
       }
     },
   },
   methods: {
     doSearch() {
-      this.$emit('doSearch', { term: this.term })
+      this.$emit('doSearch', { term: this.term });
     },
   },
-}
+};
 </script>

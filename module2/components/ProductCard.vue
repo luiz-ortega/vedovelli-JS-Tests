@@ -38,9 +38,9 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$cart.open()
-      this.$cart.addProduct(this.product)
+      this.$cart.open();
+      this.$cart.addProduct(this.product);
     },
   },
-}
+};
 </script>

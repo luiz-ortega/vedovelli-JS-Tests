@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import CartItem from '@/components/CartItem'
+import CartItem from '@/components/CartItem';
 export default {
   components: { CartItem },
   props: {
@@ -65,19 +65,19 @@ export default {
       type: Array,
       default: () => {
         /* istanbul ignore next */
-        return []
+        return [];
       },
     },
   },
   computed: {
     hasProducts() {
-      return this.products.length > 0
+      return this.products.length > 0;
     },
   },
   methods: {
     close() {
-      this.$emit('close')
+      this.$emit('close');
     },
   },
-}
+};
 </script>
