@@ -1,6 +1,9 @@
 <template>
   <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-    <div class="flex items-end justify-end h-56 w-full bg-cover">
+    <div
+      class="flex items-end justify-end h-56 w-full bg-cover"
+      :style="`background-image: url(https://images.unsplash.com/photo-1468421201266-ec88b2809284?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80)`"
+    >
       <button
         class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
         @click="addToCart"

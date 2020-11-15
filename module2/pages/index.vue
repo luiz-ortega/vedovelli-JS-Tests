@@ -1,6 +1,6 @@
 <template>
   <main class="my-8">
-    <div>
+    <div class="container mx-auto px-6">
       <h3 class="text-gray-700 text-2x1 font-medium">Wrist Watch</h3>
       <span class="mt-3 text-sm text-gray-500">200+ Products</span>
       <div
