@@ -34,7 +34,6 @@
             <button
               data-testid="toggle-button"
               class="text-gray-600 focus:outline-none mx-4 sm:mx-0"
-              @click="toggleCart"
             >
               <svg
                 class="h-5 w-5"
@@ -118,7 +117,6 @@
               </svg>
             </span>
             <input
-              v-model="term"
               class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline"
               type="search"
               placeholder="Search"
