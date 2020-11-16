@@ -18,5 +18,6 @@ module.exports = {
   // add your custom rules here
   rules: {
     'no-unused-expressions': 'off',
+    'no-console': 'off',
   },
 };

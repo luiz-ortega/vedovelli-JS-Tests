@@ -1,6 +1,6 @@
 <template>
   <main class="my-8">
-    <div class="container mx-auto px-6">
+    <div v-if="errorMessage === ''" class="container mx-auto px-6">
       <h3 class="text-gray-700 text-2x1 font-medium">Wrist Watch</h3>
       <span class="mt-3 text-sm text-gray-500">200+ Products</span>
       <div
@@ -13,6 +13,7 @@
         />
       </div>
     </div>
+    <h3 v-else class="text-center text-2x1">{{ errorMessage }}</h3>
   </main>
 </template>
 
@@ -23,11 +24,15 @@ export default {
   data() {
     return {
       products: [],
+      errorMessage: '',
     };
   },
   async created() {
-    this.products = (await this.$axios.get('/api/products')).data.products;
-    await this.$axios.get('/api/users');
+    try {
+      this.products = (await this.$axios.get('/api/products')).data.products;
+    } catch (error) {
+      this.errorMessage = 'Problemas ao carregar a lista';
+    }
   },
 };
 </script>
