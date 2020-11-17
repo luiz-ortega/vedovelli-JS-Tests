@@ -41,8 +41,7 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$cart.open();
-      this.$cart.addProduct(this.product);
+      this.$emit('addToCart', { product: this.product });
     },
   },
 };
