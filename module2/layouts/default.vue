@@ -95,7 +95,7 @@
             >
           </div>
         </nav>
-        <div class="sm:flex sm:justify-center sm:items-center">
+        <!-- <div class="sm:flex sm:justify-center sm:items-center">
           <form
             data-testid="search-form"
             class="relative mt-6 max-w-lg mx-auto"
@@ -122,7 +122,7 @@
               placeholder="Search"
             />
           </form>
-        </div>
+        </div> -->
       </div>
     </header>
     <cart />
