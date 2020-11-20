@@ -68,7 +68,7 @@ describe('ProductList - integration', () => {
 
     await Vue.nextTick();
 
-    expect(wrapper.text()).toContain('Problemas ao carregar a list');
+    expect(wrapper.text()).toContain('Problemas ao carregar a lista');
   });
 
   it('should filter the product list when a serach is performed', async () => {
@@ -105,7 +105,7 @@ describe('ProductList - integration', () => {
     expect(cards).toHaveLength(2);
   });
 
-  fit('should filter the product list when a serach term is empty', async () => {
+  it('should filter the product list when a serach term is empty', async () => {
     // Arrange
     const products = [
       ...server.createList('product', 10),
