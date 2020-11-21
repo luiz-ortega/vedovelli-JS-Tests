@@ -45,10 +45,23 @@ describe('CartItem', () => {
     expect(content).toContain(price);
   });
 
-  it('should display product info', () => {
+  it('should display product quantity', () => {
     const { wrapper } = mountCartItem();
     const quantity = wrapper.find('[data-testid="quantity"]');
 
     expect(quantity.text()).toContain('1');
+  });
+
+  it('should increase quantity when + button gets clicked', async () => {
+    const { wrapper } = mountCartItem();
+    const button = wrapper.find('[data-testid="+"]');
+    const quantity = wrapper.find('[data-testid="quantity"]');
+
+    await button.trigger('click');
+    expect(quantity.text()).toContain('2');
+    await button.trigger('click');
+    expect(quantity.text()).toContain('3');
+    await button.trigger('click');
+    expect(quantity.text()).toContain('4');
   });
 });
