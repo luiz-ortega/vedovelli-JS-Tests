@@ -97,7 +97,7 @@
           </div>
         </nav>
       </div>
-      <Cart :isOpen="isCartOpen" @close="toggleCart" />
+      <Cart :products="products" :isOpen="isCartOpen" @close="toggleCart" />
     </header>
 
     <nuxt />
@@ -124,7 +124,7 @@ export default {
       return cartState.open;
     },
     products() {
-      return this.$cart.getState().items;
+      return cartState.items;
     },
   },
   methods: {

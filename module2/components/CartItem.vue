@@ -1,7 +1,11 @@
 <template>
   <div class="flex justify-between mt-6">
     <div class="flex">
-      <img class="h-20 w-20 object-cover rounded" />
+      <img
+        :src="product.image"
+        :alt="product.title"
+        class="h-20 w-20 object-cover rounded"
+      />
       <div class="mx-3">
         <h3 class="text-sm text-gray-600">{{ product.title }}</h3>
         <button data-testid="remove-button">remover</button>
