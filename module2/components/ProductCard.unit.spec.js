@@ -52,4 +52,6 @@ describe('ProductCard - unit', () => {
 
     expect(cartState.items).toHaveLength(1);
   });
+
+  it.todo('should ensure product is not added to cart twice');
 });
