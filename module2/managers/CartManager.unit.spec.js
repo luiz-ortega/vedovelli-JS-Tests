@@ -41,7 +41,17 @@ describe('CartManager', () => {
     expect(state.items).toHaveLength(0);
   });
 
-  it.todo('should clear products');
+  it('should clear products', () => {
+    const product1 = server.create('product');
+    const product2 = server.create('product');
+
+    manager.addProduct(product1);
+    manager.addProduct(product2);
+
+    const state = manager.clearProducts();
+
+    expect(state.items).toHaveLength(0);
+  });
 
   it.todo('should return true if cart is not empty');
 
