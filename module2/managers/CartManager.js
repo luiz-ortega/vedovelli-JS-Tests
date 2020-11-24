@@ -24,10 +24,12 @@ export class CartManager {
     return this.state;
   }
 
-  addProduct(product) {
-    const exists = !!this.state.items.find(({ id }) => id === product.id);
+  productIsInTheCart(product) {
+    return !!this.state.items.find(({ id }) => id === product.id);
+  }
 
-    if (!exists) {
+  addProduct(product) {
+    if (!this.productIsInTheCart(product)) {
       this.state.items.push(product);
     }
 
