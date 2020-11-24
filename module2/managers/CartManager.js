@@ -35,4 +35,11 @@ export class CartManager {
 
     return this.state;
   }
+
+  removeProduct(id) {
+    const index = this.state.items.findIndex((product) => product.id === id);
+    this.state.items.splice(index, 1);
+
+    return this.state;
+  }
 }
