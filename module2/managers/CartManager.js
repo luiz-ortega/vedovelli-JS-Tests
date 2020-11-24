@@ -36,9 +36,10 @@ export class CartManager {
     return this.state;
   }
 
-  removeProduct(id) {
-    const index = this.state.items.findIndex((product) => product.id === id);
-    this.state.items.splice(index, 1);
+  removeProduct(productId) {
+    this.state.items = [
+      ...this.state.items.filter((product) => product.id !== productId),
+    ];
 
     return this.state;
   }
