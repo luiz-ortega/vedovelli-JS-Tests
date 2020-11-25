@@ -15,13 +15,13 @@ export class CartManager {
   open() {
     this.state.open = true;
 
-    return this.state;
+    return this.getState();
   }
 
   close() {
     this.state.open = false;
 
-    return this.state;
+    return this.getState();
   }
 
   getState() {
@@ -41,7 +41,7 @@ export class CartManager {
       this.state.items.push(product);
     }
 
-    return this.state;
+    return this.getState();
   }
 
   removeProduct(productId) {
@@ -49,13 +49,13 @@ export class CartManager {
       ...this.state.items.filter((product) => product.id !== productId),
     ];
 
-    return this.state;
+    return this.getState();
   }
 
   clearProducts() {
     this.state.items = [];
     this.state.open = false;
 
-    return this.state;
+    return this.getState();
   }
 }
