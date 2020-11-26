@@ -2,6 +2,7 @@ import Vue from 'vue';
 
 export default {
   install: (Vue) => {
+    /* instanbul ignore next */
     Vue.prototype.$cart = new CartManager();
   },
 };
