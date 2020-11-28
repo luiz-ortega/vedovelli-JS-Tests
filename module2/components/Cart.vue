@@ -64,8 +64,7 @@ export default {
     },
     products: {
       type: Array,
-      default: () => {
-        /* istanbul ignore next */
+      default: /* istanbul ignore next */ () => {
         return [];
       },
     },
