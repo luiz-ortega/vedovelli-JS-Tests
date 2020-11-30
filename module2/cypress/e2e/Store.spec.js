@@ -20,7 +20,7 @@ context('Store', () => {
   });
 
   context('Store > Search for products', () => {
-    it.only('should type in the search field', () => {
+    it('should type in the search field', () => {
       cy.visit('http://localhost:3000/');
 
       cy.get('input[type="search"]')
@@ -28,7 +28,7 @@ context('Store', () => {
         .should('have.value', 'Some text here');
     });
 
-    it.only('should find product when product name is passed on search field', () => {
+    it('should find product when product name is passed on search field', () => {
       server.createList('product', 10);
 
       server.create('product', {
@@ -36,12 +36,19 @@ context('Store', () => {
       });
 
       cy.visit('http://localhost:3000/');
-
       cy.get('input[type="search"]').type('Relógio bonito');
-
       cy.get('[data-testid="search-form"]').submit();
-
       cy.get('[data-testid="product-card"]').should('have.length', 1);
+    });
+
+    it('should not return any product', () => {
+      server.createList('product', 10);
+
+      cy.visit('http://localhost:3000/');
+      cy.get('input[type="search"]').type('Relógio bonito');
+      cy.get('[data-testid="search-form"]').submit();
+      cy.get('[data-testid="product-card"]').should('have.length', 0);
+      cy.get('body').contains('0 Products');
     });
   });
 });
