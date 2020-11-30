@@ -16,4 +16,5 @@ module.exports = {
     '<rootDir>/layouts/**/*.vue',
     '<rootDir>/managers/**/*.vue',
   ],
+  testPathIgnorePatterns: ['<rootDir>/cypress/*'],
 };
