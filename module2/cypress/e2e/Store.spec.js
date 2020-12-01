@@ -34,7 +34,7 @@ context('Store', () => {
       cy.get('body').contains('1 Product');
     });
 
-    it('should display "10 Products" when 10 product is returned', () => {
+    it('should display "10 Products" when 10 products are returned', () => {
       server.createList('product', 10);
 
       cy.visit('/');
@@ -73,6 +73,25 @@ context('Store', () => {
       cy.get('[data-testid="search-form"]').submit();
       cy.get('[data-testid="product-card"]').should('have.length', 0);
       cy.get('body').contains('0 Products');
+    });
+  });
+
+  context('Store > Shoping Cart', () => {
+    it('should not display shopping cart when page first loads', () => {
+      cy.visit('/');
+
+      cy.get('[data-tesid="shopping-cart"]').should('have.class', 'hidden');
+    });
+
+    it('should toogle shopping cart visibility when button is clicked', () => {
+      cy.visit('/');
+
+      cy.get('[data-testid="toggle-button"]').as('toogleButton');
+      cy.get('@toogleButton').click();
+      cy.get('[data-tesid="shopping-cart"]').should('not.have.class', 'hidden');
+
+      cy.get('@toogleButton').click({ force: true });
+      cy.get('[data-tesid="shopping-cart"]').should('have.class', 'hidden');
     });
   });
 });
