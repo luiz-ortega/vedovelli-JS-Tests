@@ -22,5 +22,6 @@ module.exports = {
     'no-console': 'off',
     'vue/attribute-hyphenation': 'off',
     'no-debugger': 'off',
+    'no-extra-boolean-cast': 'off',
   },
 };
