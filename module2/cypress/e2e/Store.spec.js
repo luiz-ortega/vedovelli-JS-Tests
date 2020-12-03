@@ -79,9 +79,11 @@ context('Store', () => {
     });
   });
 
-  context.only('Store > Shoping Cart', () => {
+  context('Store > Shoping Cart', () => {
+    const quantity = 10;
+
     beforeEach(() => {
-      server.createList('product', 10);
+      server.createList('product', quantity);
 
       cy.visit('/');
     });
@@ -126,7 +128,7 @@ context('Store', () => {
     it('should add all products to the cart', () => {
       cy.addToCart('all');
 
-      gid('cart-item').should('have.length', 10);
+      gid('cart-item').should('have.length', quantity);
     });
   });
 });
