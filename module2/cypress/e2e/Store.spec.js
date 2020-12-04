@@ -105,8 +105,7 @@ context('Store', () => {
       gid('toggle-button').as('toogleButton');
       g('@toogleButton').click();
 
-      // gid('clear-cart-button').should('have.class', 'hidden');
-      gid('clear-cart-button').should('not.be.visible');
+      gid('clear-cart-button').should('not.exist');
     });
 
     it('should display "Cart is empty" message when there are no products', () => {
