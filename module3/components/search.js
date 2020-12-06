@@ -25,7 +25,7 @@ export default function Search({ doSearch }) {
         value={term}
         onChange={(e) => setTerm(e.target.value)}
         className="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline"
-        type="text"
+        type="search"
         placeholder="Search"
       />
     </form>
