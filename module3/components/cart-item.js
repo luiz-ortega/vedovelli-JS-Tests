@@ -1,6 +1,6 @@
 export default function CartItem() {
   return (
-    <div className="flex justify-between mt-6">
+    <div data-testid="cart-item" className="flex justify-between mt-6">
       <div className="flex">
         <img
           className="h-20 w-20 object-cover rounded"
