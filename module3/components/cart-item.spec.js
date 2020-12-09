@@ -30,9 +30,8 @@ describe("CartItem", () => {
     expect(
       screen.getByText(new RegExp(product.price, "i"))
     ).toBeInTheDocument();
-    expect(screen.getByTestId("image")).toHaveStyle({
-      backgroundImage: product.image,
-    });
+    expect(screen.getByTestId("image")).toHaveProperty("src", product.image);
+    expect(screen.getByTestId("image")).toHaveProperty("alt", product.title);
   });
 
   it("should call props.addToCart() when button gets clicked", async () => {
