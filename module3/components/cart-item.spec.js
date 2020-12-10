@@ -9,7 +9,7 @@ const product = {
 };
 
 const renderCartItem = () => {
-  render(<CartItem product={product} addToCart={addToCart} />);
+  render(<CartItem product={product} />);
 };
 
 describe("CartItem", () => {
@@ -31,4 +31,24 @@ describe("CartItem", () => {
     expect(screen.getByTestId("image")).toHaveProperty("src", product.image);
     expect(screen.getByTestId("image")).toHaveProperty("alt", product.title);
   });
+
+  it("should display 1 as initial quantity", () => {
+    renderCartItem();
+
+    expect(screen.getByTestId("quantity").textContent).toBe("1");
+  });
+
+  it("should increase quantity by 1 when second button is clicked", async () => {
+    renderCartItem();
+
+    const [_, button] = screen.getAllByRole("button");
+
+    await fireEvent.click(button);
+
+    expect(screen.getByTestId("quantity").textContent).toBe("2");
+  });
+
+  it.todo("should descrease quantity by 1 when second button is clicked");
+
+  it.todo("should not go below zero in the quantity");
 });
