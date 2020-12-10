@@ -59,5 +59,19 @@ describe("CartItem", () => {
     expect(screen.getByTestId("quantity").textContent).toBe("1");
   });
 
-  it.todo("should not go below zero in the quantity");
+  it("should not go below zero in the quantity", async () => {
+    renderCartItem();
+
+    const [firstButton, secondButton] = screen.getAllByRole("button");
+
+    await fireEvent.click(secondButton);
+    await fireEvent.click(secondButton);
+
+    await fireEvent.click(firstButton);
+    await fireEvent.click(firstButton);
+    await fireEvent.click(firstButton);
+    await fireEvent.click(firstButton);
+
+    expect(screen.getByTestId("quantity").textContent).toBe("0");
+  });
 });
