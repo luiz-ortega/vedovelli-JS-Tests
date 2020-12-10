@@ -48,7 +48,15 @@ describe("CartItem", () => {
     expect(screen.getByTestId("quantity").textContent).toBe("2");
   });
 
-  it.todo("should descrease quantity by 1 when second button is clicked");
+  it("should descrease quantity by 1 when second button is clicked", async () => {
+    renderCartItem();
+
+    const [button] = screen.getAllByRole("button");
+
+    await fireEvent.click(button);
+
+    expect(screen.getByTestId("quantity").textContent).toBe("0");
+  });
 
   it.todo("should not go below zero in the quantity");
 });
