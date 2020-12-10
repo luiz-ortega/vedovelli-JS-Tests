@@ -51,11 +51,12 @@ describe("CartItem", () => {
   it("should descrease quantity by 1 when second button is clicked", async () => {
     renderCartItem();
 
-    const [button] = screen.getAllByRole("button");
+    const [firstButton, secondButton] = screen.getAllByRole("button");
 
-    await fireEvent.click(button);
+    await fireEvent.click(firstButton);
+    await fireEvent.click(secondButton);
 
-    expect(screen.getByTestId("quantity").textContent).toBe("0");
+    expect(screen.getByTestId("quantity").textContent).toBe("1");
   });
 
   it.todo("should not go below zero in the quantity");
