@@ -15,7 +15,10 @@ export default function CartItem({ product: { title, price, image } }) {
         <div className="mx-3">
           <h3 className="text-sm text-gray-600">{title}</h3>
           <div className="flex items-center mt-2">
-            <button className="text-gray-500 focus:outline-none focus:text-gray-600">
+            <button
+              onClick={() => setQuantity((prevState) => prevState - 1)}
+              className="text-gray-500 focus:outline-none focus:text-gray-600"
+            >
               <svg
                 className="h-5 w-5"
                 fill="none"
