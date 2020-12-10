@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import ProductCard from "../components/product-card";
 import Search from "../components/search";
+import axios from "axios";
 
 export default function Home() {
   return (
