@@ -1,14 +1,24 @@
-import { screen, render } from "@testing-library/react";
+import { screen, render, waitFor } from "@testing-library/react";
 import ProductList from "../pages";
 
+const renderProductList = () => {
+  render(<ProductList />);
+};
 describe("ProductList", () => {
   it("should render ProductList", () => {
-    render(<ProductList />);
+    renderProductList();
 
     expect(screen.getByTestId("product-list")).toBeInTheDocument();
   });
 
-  it.todo("should render the ProductCard component 10 times");
+  fit("should render the ProductCard component 10 times", async () => {
+    renderProductList();
+
+    await waitFor(() => {
+      expect(screen.getAllByTestId("product-card")).tpohaveLength(10);
+    });
+  });
+
   it.todo("should render no product message");
   it.todo("should render the Search component");
   it.todo("should filter the product list when a search is performed");
