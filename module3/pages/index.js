@@ -2,28 +2,10 @@ import { useState, useEffect } from "react";
 import ProductCard from "../components/product-card";
 import Search from "../components/search";
 import axios from "axios";
+import { useFetchProducts } from "../hooks/use-fetch-products";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    let mounted = true;
-    axios
-      .get("/api/products")
-      .then((res) => {
-        if (mounted) {
-          setProducts(res.data.products);
-        }
-      })
-      .catch((error) => {
-        if (mounted) {
-          setError(true);
-        }
-      });
-
-    return () => (mounted = false);
-  }, []);
+  const { products, error } = useFetchProducts();
 
   return (
     <main data-testid="product-list" className="my-8">
