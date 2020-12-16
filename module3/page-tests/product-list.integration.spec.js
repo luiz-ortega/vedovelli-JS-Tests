@@ -81,5 +81,6 @@ describe("ProductList", () => {
   });
 
   it.todo("should display the total quantity of products");
+
   it.todo("should display product (singular) when there is only 1 product");
 });
