@@ -80,7 +80,15 @@ describe("ProductList", () => {
     });
   });
 
-  it.todo("should display the total quantity of products");
+  it("should display the total quantity of products", async () => {
+    server.createList("product", 10);
+
+    renderProductList();
+
+    await waitFor(() => {
+      expect(screen.getByText(/10 Products/i)).toBeInTheDocument();
+    });
+  });
 
   it.todo("should display product (singular) when there is only 1 product");
 });
