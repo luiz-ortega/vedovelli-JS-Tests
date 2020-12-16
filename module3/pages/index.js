@@ -39,11 +39,9 @@ export default function Home() {
   };
 
   const renderProductQuantity = () => {
-    if (localProducts.length === 1) {
-      return `${localProducts.length} Product`;
-    } else {
-      return `${localProducts.length} Products`;
-    }
+    return localProducts.length === 1
+      ? "1 Product"
+      : `${localProducts.length} Products`;
   };
 
   return (
