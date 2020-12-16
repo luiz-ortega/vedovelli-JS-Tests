@@ -6,6 +6,7 @@ import Response from "miragejs";
 const renderProductList = () => {
   render(<ProductList />);
 };
+
 describe("ProductList", () => {
   let server;
   beforeEach(() => {
