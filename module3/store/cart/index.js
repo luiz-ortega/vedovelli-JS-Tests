@@ -10,7 +10,8 @@ export const useCartStore = create((set) => ({
     ...initialState,
   },
   actions: {
-    toggle: () => set((store) => ({ state: { open: !store.state.open } })),
+    toggle: () =>
+      set((store) => ({ state: { ...store.state, open: !store.state.open } })),
     reset: () => set((store) => ({ state: { ...initialState } })),
     add: (product) =>
       set((store) => ({
