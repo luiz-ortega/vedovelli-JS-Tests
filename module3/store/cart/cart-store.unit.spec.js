@@ -8,6 +8,13 @@ describe("Cart", () => {
     expect(result.current.state.open).toBe(false);
   });
 
+  it("should return an empty array for products on initial state", () => {
+    const { result } = renderHook(() => useCartStore());
+
+    expect(Array.isArray(result.current.state.products)).toBe(true);
+    expect(result.current.state.products).toHaveLength(0);
+  });
+
   it("should toggle open state", () => {
     const { result } = renderHook(() => useCartStore());
 
