@@ -1,5 +1,5 @@
 export default function ProductCard({
-  product: { title, price, image },
+  product: { title, price, image, id },
   addToCart,
 }) {
   return (
@@ -13,7 +13,7 @@ export default function ProductCard({
           }}
         >
           <button
-            onClick={() => addToCart({ title, price, image })}
+            onClick={() => addToCart({ title, price, image, id })}
             className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
           >
             <svg
