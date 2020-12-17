@@ -20,6 +20,7 @@ export default function CartItem({ product: { title, price, image } }) {
           src={image}
           alt={title}
         />
+
         <div className="mx-3">
           <h3 className="text-sm text-gray-600">{title}</h3>
           <div className="flex items-center mt-2">

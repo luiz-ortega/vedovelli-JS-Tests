@@ -4,6 +4,7 @@ import { useCartStore } from "../store/cart";
 export default function Cart() {
   const open = useCartStore((store) => store.state.open);
   const toggle = useCartStore((store) => store.actions.toggle);
+  const products = useCartStore((store) => store.state.products);
 
   return (
     <div
@@ -28,7 +29,9 @@ export default function Cart() {
         </button>
       </div>
       <hr className="my-3" />
-      {/* <CartItem /> */}
+      {products.map((product) => (
+        <CartItem product={product} key={product.id} />
+      ))}
       <div className="mt-8">
         <form className="flex items-center justify-center">
           <input
