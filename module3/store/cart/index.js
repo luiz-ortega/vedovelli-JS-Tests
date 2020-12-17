@@ -7,5 +7,9 @@ export const useCartStore = create((set) => ({
   },
   actions: {
     toggle: () => set((store) => ({ state: { open: !store.state.open } })),
+    add: (product) =>
+      set((store) => ({
+        state: { ...store.state, products: [...store.state.products, product] },
+      })),
   },
 }));
