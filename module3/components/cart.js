@@ -8,6 +8,7 @@ export default function Cart() {
 
   return (
     <div
+      data-testid="cart"
       className={`${
         !open ? "hidden" : ""
       } fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300`}
