@@ -27,9 +27,46 @@ describe("Cart", () => {
     jest.clearAllMocks();
   });
 
-  it("should render Cart", () => {
+  it("should add css class 'hidden' in the component", () => {
     render(<Cart />);
 
-    expect(screen.getByTestId("cart")).toBeInTheDocument();
+    expect(screen.getByTestId("cart")).toHaveClass("hidden");
+  });
+
+  it("should remove css class 'hidden' in the component when cart is toggled", () => {
+    act(() => {
+      toggle();
+    });
+
+    render(<Cart />);
+
+    expect(screen.getByTestId("cart")).not.toHaveClass("hidden");
+  });
+
+  it("should call toggle() twice", () => {
+    render(<Cart />);
+
+    const button = screen.getByTestId("close-button");
+
+    act(() => {
+      userEvent.click(button);
+      userEvent.click(button);
+    });
+
+    expect(spy).toHaveBeenCalledTimes(2);
+  });
+
+  it("should display 2 products card", () => {
+    const products = server.createList("product", 2);
+
+    act(() => {
+      for (const product of products) {
+        add(product);
+      }
+    });
+
+    render(<Cart />);
+
+    expect(screen.getAllByTestId("cart-item")).toHaveLength(2);
   });
 });
