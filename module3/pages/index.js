@@ -25,15 +25,10 @@ export default function Home() {
 
   const renderProductListOrMessage = () => {
     if (localProducts.length === 0 && !error) {
-      return <h4 data-testid="no-products">No Products</h4>;
+      return <h4 data-testid="no-products">No products</h4>;
     }
-
     return localProducts.map((product) => (
-      <ProductCard
-        addToCart={(product) => addToCart(product)}
-        product={product}
-        key={product.id}
-      />
+      <ProductCard product={product} key={product.id} addToCart={addToCart} />
     ));
   };
 
