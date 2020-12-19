@@ -1,5 +1,6 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 import { useCartStore } from ".";
+import product from "../../miragejs/factories/product";
 import { makeServer } from "../../miragejs/server";
 
 describe("Cart store", () => {
@@ -7,12 +8,14 @@ describe("Cart store", () => {
   let result;
   let add;
   let toggle;
+  let remove;
 
   beforeEach(() => {
     server = makeServer({ environment: "test" });
     result = renderHook(() => useCartStore()).result;
     add = result.current.actions.add;
     toggle = result.current.actions.toggle;
+    remove = result.current.actions.remove;
   });
 
   afterEach(() => {
@@ -58,5 +61,23 @@ describe("Cart store", () => {
     act(() => toggle());
     expect(result.current.state.open).toBe(false);
     expect(result.current.state.products).toHaveLength(0);
+  });
+
+  it("should remove a product from the store", () => {
+    const [product1, product2] = server.createList("product", 2);
+
+    act(() => {
+      add(product1);
+      add(product2);
+    });
+
+    expect(result.current.state.products).toHaveLength(2);
+
+    act(() => {
+      remove(product1);
+    });
+
+    expect(result.current.state.products).toHaveLength(1);
+    expect(result.current.state.products[0]).toEqual(product2);
   });
 });
