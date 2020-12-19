@@ -47,6 +47,11 @@ export const useCartStore = create((set) => {
           }
         });
       },
+      removeAll() {
+        setState(({ state }) => {
+          state.products = [];
+        });
+      },
       add(product) {
         setState((store) => {
           store.state = {
