@@ -41,9 +41,11 @@ describe("CartItem", () => {
   it("should increase quantity by 1 when second button is clicked", async () => {
     renderCartItem();
 
-    const [_, button] = screen.getAllByRole("button");
+    const [removeButton, firstButton, secondButton] = screen.getAllByRole(
+      "button"
+    );
 
-    await fireEvent.click(button);
+    await fireEvent.click(secondButton);
 
     expect(screen.getByTestId("quantity").textContent).toBe("2");
   });
@@ -51,7 +53,9 @@ describe("CartItem", () => {
   it("should descrease quantity by 1 when second button is clicked", async () => {
     renderCartItem();
 
-    const [firstButton, secondButton] = screen.getAllByRole("button");
+    const [removeButton, firstButton, secondButton] = screen.getAllByRole(
+      "button"
+    );
 
     await fireEvent.click(firstButton);
     await fireEvent.click(secondButton);
