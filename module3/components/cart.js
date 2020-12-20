@@ -2,9 +2,8 @@ import CartItem from "./cart-item";
 import { useCartStore } from "../store/cart";
 
 export default function Cart() {
-  const open = useCartStore((store) => store.state.open);
+  const { open, products } = useCartStore((store) => store.state);
   const toggle = useCartStore((store) => store.actions.toggle);
-  const products = useCartStore((store) => store.state.products);
 
   return (
     <div
