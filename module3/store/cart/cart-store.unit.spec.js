@@ -34,7 +34,7 @@ describe("Cart store", () => {
     expect(result.current.state.products).toHaveLength(0);
   });
 
-  it("should add 2 products to the list", () => {
+  it("should add 2 products to the list and open the cart", () => {
     const products = server.createList("product", 2);
 
     for (const product of products) {
@@ -42,6 +42,7 @@ describe("Cart store", () => {
     }
 
     expect(result.current.state.products).toHaveLength(2);
+    expect(result.current.state.open).toBe(true);
   });
 
   it("should not add same product twice", () => {
