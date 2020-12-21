@@ -25,9 +25,12 @@ export default function CartItem({ product: { id, title, price, image } }) {
 
         <div className="mx-3">
           <h3 className="text-sm text-gray-600">{title}</h3>
-          <button onClick={() => remove({ id })}>remove</button>
+          <button onClick={() => remove({ id, title, price, image })}>
+            remove
+          </button>
           <div className="flex items-center mt-2">
             <button
+              data-testid="decrease"
               onClick={decrease}
               className="text-gray-500 focus:outline-none focus:text-gray-600"
             >
@@ -48,6 +51,7 @@ export default function CartItem({ product: { id, title, price, image } }) {
             </span>
 
             <button
+              data-testid="increase"
               onClick={increase}
               className="text-gray-500 focus:outline-none focus:text-gray-600"
             >
