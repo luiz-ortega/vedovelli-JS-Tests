@@ -1,10 +1,13 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook, act as hookAct } from "@testing-library/react-hooks";
 import { screen, render } from "@testing-library/react";
 import { useCartStore } from "../store/cart";
 import { setAutoFreeze } from "immer";
 import { makeServer } from "../miragejs/server";
 import userEvent from "@testing-library/user-event";
 import Cart from "./cart";
+import TestRenderer from "react-test-renderer";
+
+const { act: componentsAct } = TestRenderer;
 
 setAutoFreeze(false);
 
@@ -37,32 +40,34 @@ describe("Cart", () => {
   });
 
   it("should remove css class 'hidden' in the component when cart is toggled", () => {
-    act(() => {
-      toggle();
+    componentsAct((async) => {
+      render(<Cart />);
+
+      const button = screen.getByTestId("close-button");
+
+      userEvent.click(button);
+
+      expect(screen.getByTestId("cart")).not.toHaveClass("hidden");
     });
-
-    render(<Cart />);
-
-    expect(screen.getByTestId("cart")).not.toHaveClass("hidden");
   });
 
   it("should call toggle() twice", () => {
-    render(<Cart />);
+    componentsAct(() => {
+      render(<Cart />);
 
-    const button = screen.getByTestId("close-button");
+      const button = screen.getByTestId("close-button");
 
-    act(() => {
       userEvent.click(button);
       userEvent.click(button);
+
+      expect(spy).toHaveBeenCalledTimes(2);
     });
-
-    expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it("should display 2 products card", () => {
     const products = server.createList("product", 2);
 
-    act(() => {
+    hookAct(() => {
       for (const product of products) {
         add(product);
       }
@@ -71,5 +76,26 @@ describe("Cart", () => {
     render(<Cart />);
 
     expect(screen.getAllByTestId("cart-item")).toHaveLength(2);
+  });
+
+  it("should remove all products when clear cart button is clicked", () => {
+    const products = server.createList("product", 2);
+
+    hookAct(() => {
+      for (const product of products) {
+        add(product);
+      }
+    });
+
+    componentsAct(() => {
+      render(<Cart />);
+      expect(screen.getAllByTestId("cart-item")).toHaveLength(2);
+
+      const button = screen.getByRole("button", { name: /clear cart/i });
+
+      userEvent.click(button);
+
+      expect(screen.queryAllByTestId("cart-item")).toHaveLength(0);
+    });
   });
 });
