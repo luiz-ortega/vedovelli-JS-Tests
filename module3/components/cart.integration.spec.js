@@ -98,4 +98,10 @@ describe("Cart", () => {
       expect(screen.queryAllByTestId("cart-item")).toHaveLength(0);
     });
   });
+
+  it("should not display clear cart button if no products are in the cart", async () => {
+    render(<Cart />);
+
+    expect(screen.queryByRole("button", { name: /clear cart/i })).toBeNull();
+  });
 });
