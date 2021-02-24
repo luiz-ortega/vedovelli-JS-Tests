@@ -11,6 +11,7 @@ export async function index(req, res, next) {
      * pelo gerenciador global de erros (ver app.js) e chegarão
      * no client que fez a requisição
      */
+
     next(error);
   }
 }
