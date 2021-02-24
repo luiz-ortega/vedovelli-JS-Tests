@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import logger from 'morgan';
 import express from 'express';
 import cookieParser from 'cookie-parser';
