@@ -6,6 +6,11 @@
     "mocha": true,
     "jest": true
   },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
   "extends": ["airbnb-base"],
   "globals": {
     "Atomics": "readonly",
@@ -25,6 +30,13 @@
     "arrow-parens": [0],
     "object-curly-spacing": ["warn", "always"],
     "array-bracket-spacing": ["warn", "always"],
-    "import/prefer-default-export": [0]
+    "import/prefer-default-export": [0],
+    "no-restricted-syntax": [
+      "error",
+      "ForInStatement",
+      "LabeledStatement",
+      "WithStatement"
+    ],
+    "spaced-comment": 0
   }
 }

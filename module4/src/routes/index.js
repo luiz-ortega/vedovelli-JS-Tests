@@ -1,6 +1,6 @@
+import { serviceMiddleware, userMiddleware } from '@/middleware';
 import homeRouter from './home.router';
 import ordersRouter from './orders.router';
-import { serviceMiddleware, userMiddleware } from '@/middleware';
 
 const routers = [{ '/': homeRouter }, { '/order': ordersRouter }];
 
