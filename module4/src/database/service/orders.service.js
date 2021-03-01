@@ -30,6 +30,7 @@ export async function saveOrder(data) {
   if (!data) {
     return Promise.reject(appError('Failed to save order'));
   }
+
   logger.info(`New order saved`, { data });
   return await Order.create(data);
 }
