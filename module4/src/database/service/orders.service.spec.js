@@ -57,7 +57,7 @@ describe('Service > Orders', () => {
     expect(saveOrder()).rejects.toEqual(error);
   });
 
-  it('should return an user when', async () => {
+  it('should return an order when saveOrder is success', async () => {
     const user = buildUser();
 
     const data = {
