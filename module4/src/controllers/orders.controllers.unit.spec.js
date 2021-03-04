@@ -6,7 +6,10 @@ import {
   buildReq,
   buildRes,
 } from 'test/builders';
-import { index } from './orders.controller';
+import * as validator from 'express-validator';
+import { index, validate } from './orders.controller';
+
+jest.mock('express-validator');
 
 describe('Controllers > orders', () => {
   it('should return 200 and a list of orders', async () => {
@@ -29,7 +32,7 @@ describe('Controllers > orders', () => {
     expect(req.service.listOrders).toHaveBeenLastCalledWith(req.user.id);
   });
 
-  fit('should forward an error when service.listOrder fails', async () => {
+  it('should forward an error when service.listOrder fails', async () => {
     const req = buildReq();
     const res = buildRes();
     const next = buildNext();
@@ -46,5 +49,36 @@ describe('Controllers > orders', () => {
     expect(res.json).not.toHaveBeenCalled();
     expect(next).toHaveBeenCalledTimes(1);
     expect(next).toHaveBeenCalledWith(error);
+  });
+
+  it('should return 200 and a list of orders', () => {});
+
+  it('should return error when service.listOrder fails', () => {});
+
+  it('should build a list of errors', () => {
+    const method = 'create';
+    const existsFn = jest
+      .fn()
+      .mockReturnValueOnce(`Please provide a list of products`);
+
+    jest.spyOn(validator, 'body').mockReturnValueOnce({
+      exists: existsFn,
+    });
+
+    const errors = validate(method);
+
+    expect(errors).toHaveLength(1);
+    expect(errors).toEqual(['Please provide a list of products']);
+    expect(validator.body).toHaveBeenCalledTimes(1);
+    expect(validator.body).toHaveBeenCalledWith(
+      'products',
+      'Please provide a list of products',
+    );
+  });
+
+  fit('should throw an error when an unknow method is provided', () => {
+    expect(() => {
+      validate('some unknow method');
+    }).toThrowError('Please provide a valid method name');
   });
 });
