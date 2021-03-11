@@ -11,5 +11,5 @@ export function buildCall(endpoint, method = 'get', body = null) {
 
   jest.spyOn(service, 'findOrSave').mockResolvedValue([user]);
 
-  return request[method]('/api/order').send(body).set('email', user.email);
+  return request[method](endpoint).send(body).set('email', user.email);
 }
